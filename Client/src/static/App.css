@@ -13,6 +13,10 @@ p {
   color: #FFF;
 }
 
+p {
+  font-size: 1rem;
+}
+
 .app {
   margin: 0 auto;
   text-align: center;
@@ -21,7 +25,7 @@ p {
 
 .header {
   color: #FFF;
-  font-size: 60px;
+  font-size: 3rem;
   font-family: "Bungee", cursive;
 }
 
@@ -37,18 +41,21 @@ a.link {
 
 a.link:hover {
   color: #66B933;
-  text-decoration: none;
-  border-bottom: 2px solid #66B933;
 }
 
 .user {
   margin: 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #FFF;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-family: "Bungee", cursive;
+}
+
+.user p {
+  font-size: 1.2rem;
 }
 
 img {
@@ -58,15 +65,15 @@ img {
 
 .user-infos {
   align-items: center;
-  text-align: left;
+  text-align: center;
 }
 
 .user-infos p {
   margin: 0.5rem 0rem;
-  margin-left: 1rem;
 }
 
 .list {
+  margin: 1rem 0;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -74,15 +81,16 @@ img {
 }
 
 .cartao {
+  margin-bottom: 0.5rem;
   background-color: #252021;
-  margin: 1rem;
   display: grid;
   align-items: center;
-  width: 40%;
-  grid-template-columns: 1fr 5fr 1fr;
+  width: 90%;
+  grid-template-columns: 1fr 5fr;
 }
 
 .cartao h1 {
+  margin-left: 1rem;
   grid-column: 1 / 2;
   text-align: center;
   color: #1ED761;
@@ -101,17 +109,46 @@ img {
 }
 
 .cartao img {
-  grid-column: 3 / 4;
-  margin: 1rem 1rem;
-  width: 6rem;
-  height: auto;
+  display: none;
 }
 
 .logout {
-  font-size: 20px;
+  font-size: 1.2rem;
   font-family: "Bungee", cursive;
 }
 
 .cartao:hover {
   background-color: #000;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    font-size: 4rem;
+  }
+  
+  .user {
+    flex-direction: row;
+  }
+  
+  .user-infos {
+    text-align: left;
+  }
+  
+  .user-infos p {
+    margin-left: 1rem;
+  }
+  
+  .cartao {
+    margin: 0;
+    width: 45%;
+    grid-template-columns: 1fr 5fr 1fr;
+  }
+  
+  .cartao img {
+    display: block;
+    grid-column: 3 / 4;
+    margin: 1rem 1rem;
+    width: 6rem;
+    height: auto;
+  }
 }

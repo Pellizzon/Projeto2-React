@@ -9,7 +9,7 @@ const Header = props => {
 
       <div className="subheader-body">
         <span className="subheader">
-          <p>Powered by <a className="link" target="noopener" href="https://developer.spotify.com/documentation/web-api/">
+          <p>Powered by <a className="link" target="_self" href="https://developer.spotify.com/documentation/web-api/">
             Spotify API
           </a>.
           </p>

@@ -85,9 +85,9 @@ function App() {
             <div className="cartao" key={index}>
               <h1>{index + 1}</h1>
               <div className="conteudo">
-                <p key={index.toString() + "Track"}>Track: {playlist[index].name}</p>
-                <p key={index.toString() + "Artist"}>Artists: {playlist[index].artists[0].name}</p>
-                <p key={index.toString() + "Album"}>Album: {playlist[index].album.name}</p>
+                <p key={"Track"}>Track: {playlist[index].name}</p>
+                <p key={"Artist"}>Artists: {playlist[index].artists[0].name}</p>
+                <p key={"Album"}>Album: {playlist[index].album.name}</p>
               </div>
               <img src={playlist[index].album.images[0].url} width="60" height="60" alt="album pic" />
             </div>
