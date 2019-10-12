@@ -1,3 +1,7 @@
+html {
+  background-color: #000;
+}
+
 h1,
 h2,
 h3,
@@ -6,35 +10,35 @@ h5,
 h6,
 p {
   font-family: "Bungee", cursive;
-}
-
-span.bungee {
-  font-family: "Bungee", cursive;
+  color: #FFF;
 }
 
 .app {
-  max-width: 720px;
   margin: 0 auto;
   text-align: center;
+  background-color: #000;
 }
 
 .header {
+  color: #FFF;
   font-size: 60px;
   font-family: "Bungee", cursive;
 }
-.subheader {
-  font-size: 20px;
-  font-family: "Bungee", cursive;
+
+.user-img{
+  margin: 0.5rem 0rem;
+  border-radius: 100%;
 }
 
 a.link {
   text-decoration: none;
-  color: #1DB954;
+  color: #1ED761;
 }
 
 a.link:hover {
+  color: #66B933;
   text-decoration: none;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #66B933;
 }
 
 .user {
@@ -42,6 +46,9 @@ a.link:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #FFF;
+  font-size: 20px;
+  font-family: "Bungee", cursive;
 }
 
 img {
@@ -49,47 +56,62 @@ img {
   width: 6rem;
 }
 
-.infos p {
+.user-infos {
+  align-items: center;
+  text-align: left;
+}
+
+.user-infos p {
   margin: 0.5rem 0rem;
   margin-left: 1rem;
 }
 
 .list {
-  margin: 1rem;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.card {
+.cartao {
+  background-color: #252021;
   margin: 1rem;
   display: grid;
   align-items: center;
   width: 40%;
   grid-template-columns: 1fr 5fr 1fr;
-  border: solid;
-  border-radius: 5rem;
 }
 
-.card h1 {
+.cartao h1 {
   grid-column: 1 / 2;
   text-align: center;
+  color: #1ED761;
 }
 
-.card .content {
+.cartao .conteudo {
   grid-column: 2 / 3;
   justify-self: start;
 }
 
-.content p {
+.conteudo p {
+  color: #FFF;
   margin: 0.5rem 0rem;
   margin-left: 1rem;
+  text-align: left;
 }
 
-.card img {
+.cartao img {
   grid-column: 3 / 4;
   margin: 1rem 1rem;
   width: 6rem;
   height: auto;
-  border-radius: 0.75rem;
+}
+
+.logout {
+  font-size: 20px;
+  font-family: "Bungee", cursive;
+}
+
+.cartao:hover {
+  background-color: #000;
 }

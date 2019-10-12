@@ -1,6 +1,6 @@
 # spotify-api-intro
 This Repo is the result of a tutorial that teaches how to use Spotify's API with react.
-It's a siple app that allos users to see what song they currently have playing on Spotify.
+It's a simple app that allows users to see what song they currently have been playing on Spotify.
 There are two parts to it, the auth-server, and the client. 
 
 ## Getting Statrted
@@ -11,7 +11,6 @@ There are two parts to it, the auth-server, and the client.
 - Enter http//localhost:8888/callback as the redirect uri
 - Save your changes
 - Copy down the following: Redirect uri, client id, client secret
-
 
 ### 2)  Start Auth Server
 - Navigate to the server directory `cd Server`

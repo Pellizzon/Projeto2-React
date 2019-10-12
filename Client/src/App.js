@@ -67,26 +67,24 @@ function App() {
         <div>
           <Header title="My Festival" />
         </div>
-        <span className="subheader">
-          <div>
-            Logged in as {user.display_name}
+        <span className="user">
+          {typeof (user.images[0]) !== "undefined" && (
+            <img src={user.images[0].url} className='user-img' width="60" height="60" alt='user pic' />
+          )}
+          {typeof (user.images[0]) === "undefined" && (
+            <img src={standard} className='user-img' width="60" height="60" alt='user pic' />
+          )}
+          <div className="user-infos">
+            <p>Logged in as {user.display_name}</p>
             <p>{user.email}</p>
-            <p>{user.country}</p>
-            <p>{user.id}</p>
-            {typeof (user.images[0]) !== "undefined" && (
-              <p><img src={user.images[0].url} className='rounded-circle' width="60" height="60" alt='user pic' /></p>
-            )}
-            {typeof (user.images[0]) === "undefined" && (
-              <p><img src={standard} className='rounded-circle' width="60" height="60" alt='user pic' /></p>
-            )}
           </div>
         </span>
-        <p><a href="localhost:3000" className="btn btn-success">Logout</a></p>
+        <a href='localhost:3000' className="link logout" >Logout</a>
         <div className="list">{playlist.map((obj, index) => {
           return (
-            <div className="card" key={index}>
+            <div className="cartao" key={index}>
               <h1>{index + 1}</h1>
-              <div className="content">
+              <div className="conteudo">
                 <p key={index.toString() + "Track"}>Track: {playlist[index].name}</p>
                 <p key={index.toString() + "Artist"}>Artists: {playlist[index].artists[0].name}</p>
                 <p key={index.toString() + "Album"}>Album: {playlist[index].album.name}</p>
@@ -105,7 +103,7 @@ function App() {
       <div>
         <Header title="My Festival" />
       </div>
-      <span className="subheader">
+      <span className="user">
         <a href='localhost:8888/login' className="link" >Login with Spotify</a>
       </span>
     </div >
