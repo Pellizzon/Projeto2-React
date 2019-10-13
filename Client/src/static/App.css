@@ -158,6 +158,15 @@ img {
   color: #FFF;
 }
 
+.term {
+  width: 40%;
+  margin: 0 0.25rem;
+}
+
+.create {
+  width: 82%;
+}
+
 @media only screen and (min-width: 768px) {
   .header {
     font-size: 4rem;
@@ -191,5 +200,13 @@ img {
 
   .search {
     width: 30%;
+  }
+
+  .term {
+    width: 10%;
+  }
+
+  .create {
+    width: 20.5%;
   }
 }

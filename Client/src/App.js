@@ -124,24 +124,24 @@ function App() {
         </p>
         {term === "short_term" && (
           <p>
-            <button onClick={() => getTerm("medium_term")}>Medium Term</button>
-            <button onClick={() => getTerm("long_term")}>Long Term</button>
+            <button className='term' onClick={() => getTerm("medium_term")}>Medium Term</button>
+            <button className='term' onClick={() => getTerm("long_term")}>Long Term</button>
           </p>
         )}
         {term === "medium_term" && (
           <p>
-            <button onClick={() => getTerm("short_term")}>Short Term</button>
-            <button onClick={() => getTerm("long_term")}>Long Term</button>
+            <button className='term' onClick={() => getTerm("short_term")}>Short Term</button>
+            <button className='term' onClick={() => getTerm("long_term")}>Long Term</button>
           </p>
         )}
         {term === "long_term" && (
           <p>
-            <button onClick={() => getTerm("short_term")}>Short Term</button>
-            <button onClick={() => getTerm("medium_term")}>Medium Term</button>
+            <button className='term' onClick={() => getTerm("short_term")}>Short Term</button>
+            <button className='term' onClick={() => getTerm("medium_term")}>Medium Term</button>
           </p>
         )}
         <p>
-          <button onClick={() => createPlaylist()}>
+          <button className='create' onClick={() => createPlaylist()}>
             Create My Festival Playlist!
           </button>
         </p>
