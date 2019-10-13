@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import request from "request";
 import standard from "./static/standard.png";
-import OverlayTrigger from 'react-overlay-trigger'
+import OverlayTrigger from "react-overlay-trigger";
 
 var spotifyApi = new SpotifyWebApi();
 
@@ -125,12 +125,24 @@ function App() {
         </p>
         {term === "short_term" && (
           <p>
-            <OverlayTrigger placement="left" trigger="hover" overlay={<h6>Last 6 months of data</h6>}>
-              <button className="term" onClick={() => getTerm("medium_term")} variant="secondary">
+            <OverlayTrigger
+              placement="left"
+              trigger="hover"
+              overlay={<h6>Last 6 months of data</h6>}
+            >
+              <button
+                className="term"
+                onClick={() => getTerm("medium_term")}
+                variant="secondary"
+              >
                 Medium Term
               </button>
             </OverlayTrigger>
-            <OverlayTrigger placement="right" trigger="hover" overlay={<h6>Several years of data</h6>}>
+            <OverlayTrigger
+              placement="right"
+              trigger="hover"
+              overlay={<h6>Several years of data</h6>}
+            >
               <button className="term" onClick={() => getTerm("long_term")}>
                 Long Term
               </button>
@@ -139,12 +151,20 @@ function App() {
         )}
         {term === "medium_term" && (
           <p>
-            <OverlayTrigger placement="left" trigger="hover" overlay={<h6>Last 4 weeks of data</h6>}>
+            <OverlayTrigger
+              placement="left"
+              trigger="hover"
+              overlay={<h6>Last 4 weeks of data</h6>}
+            >
               <button className="term" onClick={() => getTerm("short_term")}>
                 Short Term
-            </button>
+              </button>
             </OverlayTrigger>
-            <OverlayTrigger placement="right" trigger="hover" overlay={<h6>Several years of data</h6>}>
+            <OverlayTrigger
+              placement="right"
+              trigger="hover"
+              overlay={<h6>Several years of data</h6>}
+            >
               <button className="term" onClick={() => getTerm("long_term")}>
                 Long Term
               </button>
@@ -153,12 +173,20 @@ function App() {
         )}
         {term === "long_term" && (
           <p>
-            <OverlayTrigger placement="left" trigger="hover" overlay={<h6>Last 4 weeks of data</h6>}>
+            <OverlayTrigger
+              placement="left"
+              trigger="hover"
+              overlay={<h6>Last 4 weeks of data</h6>}
+            >
               <button className="term" onClick={() => getTerm("short_term")}>
                 Short Term
               </button>
             </OverlayTrigger>
-            <OverlayTrigger placement="right" trigger="hover" overlay={<h6>Last 6 months of data</h6>}>
+            <OverlayTrigger
+              placement="right"
+              trigger="hover"
+              overlay={<h6>Last 6 months of data</h6>}
+            >
               <button className="term" onClick={() => getTerm("medium_term")}>
                 Medium Term
               </button>
@@ -166,20 +194,28 @@ function App() {
           </p>
         )}
         <p>
-          <OverlayTrigger placement="right" trigger="hover" overlay={<div><h6>Instructions</h6>
-            <li>Create a playlist named <code>myFestival</code></li>
-            <li>Set it to public</li>
-            <li>Enjoy!</li></div>}>
+          <OverlayTrigger
+            placement="right"
+            trigger="hover"
+            overlay={
+              <div>
+                <h6>Instructions</h6>
+                <li>
+                  Create a playlist named <code>myFestival</code>
+                </li>
+                <li>Set it to public</li>
+                <li>Enjoy!</li>
+              </div>
+            }
+          >
             <button className="create" onClick={() => createPlaylist()}>
               Create My Festival Playlist!
             </button>
           </OverlayTrigger>
         </p>
-        {
-          typeof myFestival !== "undefined" && myFestival !== "notFound" && (
-            <p>Created myFestival!</p>
-          )
-        }
+        {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
+          <p>Created myFestival!</p>
+        )}
         {myFestival === "notFound" && <p>Playlist not found...</p>}
         <input
           className="search"
@@ -208,7 +244,7 @@ function App() {
             );
           })}
         </div>
-      </div >
+      </div>
     );
   }
 
