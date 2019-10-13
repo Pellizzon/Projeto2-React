@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import request from "request";
 import standard from "./static/standard.png";
+import { CSSTransitionGroup } from "react-transition-group";
 
 var spotifyApi = new SpotifyWebApi();
 
@@ -124,24 +125,36 @@ function App() {
         </p>
         {term === "short_term" && (
           <p>
-            <button className='term' onClick={() => getTerm("medium_term")}>Medium Term</button>
-            <button className='term' onClick={() => getTerm("long_term")}>Long Term</button>
+            <button className="term" onClick={() => getTerm("medium_term")}>
+              Medium Term
+            </button>
+            <button className="term" onClick={() => getTerm("long_term")}>
+              Long Term
+            </button>
           </p>
         )}
         {term === "medium_term" && (
           <p>
-            <button className='term' onClick={() => getTerm("short_term")}>Short Term</button>
-            <button className='term' onClick={() => getTerm("long_term")}>Long Term</button>
+            <button className="term" onClick={() => getTerm("short_term")}>
+              Short Term
+            </button>
+            <button className="term" onClick={() => getTerm("long_term")}>
+              Long Term
+            </button>
           </p>
         )}
         {term === "long_term" && (
           <p>
-            <button className='term' onClick={() => getTerm("short_term")}>Short Term</button>
-            <button className='term' onClick={() => getTerm("medium_term")}>Medium Term</button>
+            <button className="term" onClick={() => getTerm("short_term")}>
+              Short Term
+            </button>
+            <button className="term" onClick={() => getTerm("medium_term")}>
+              Medium Term
+            </button>
           </p>
         )}
         <p>
-          <button className='create' onClick={() => createPlaylist()}>
+          <button className="create" onClick={() => createPlaylist()}>
             Create My Festival Playlist!
           </button>
         </p>
@@ -153,29 +166,35 @@ function App() {
           className="search"
           type="text"
           onChange={e => setSearch(e.target.value)}
-          placeholder="&#xF002; Search Track Name..."
+          placeholder="&#xF002;    Search Track Name..."
           value={search}
         />
-        <div className="list">
-          {filteredData.map((obj, index) => {
-            return (
-              <div className="cartao" key={index}>
-                <h1>{obj.ranking}</h1>
-                <div className="conteudo">
-                  <p>Track: {obj.name}</p>
-                  <p>Artists: {obj.artists[0].name}</p>
-                  <p>Album: {obj.album.name}</p>
+        <CSSTransitionGroup
+          transitionName="example"
+          transitionAppear={true}
+          transitionAppearTimeout={1000}
+        >
+          <div className="list">
+            {filteredData.map((obj, index) => {
+              return (
+                <div className="cartao" key={index}>
+                  <h1>{obj.ranking}</h1>
+                  <div className="conteudo">
+                    <p>Track: {obj.name}</p>
+                    <p>Artists: {obj.artists[0].name}</p>
+                    <p>Album: {obj.album.name}</p>
+                  </div>
+                  <img
+                    src={obj.album.images[0].url}
+                    width="60"
+                    height="60"
+                    alt="album pic"
+                  />
                 </div>
-                <img
-                  src={obj.album.images[0].url}
-                  width="60"
-                  height="60"
-                  alt="album pic"
-                />
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </CSSTransitionGroup>
       </div>
     );
   }
