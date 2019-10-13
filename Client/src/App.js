@@ -63,7 +63,10 @@ function App() {
   }, []);
 
   if (playlist && user && token) {
-    
+    for (var i = 0; i < playlist.length; i++) {
+      var ranking = i + 1;
+      playlist[i]["ranking"] = ranking;
+    }
     const filteredData = playlist.filter(item => {
         return item.name.toLowerCase().includes(search.toLowerCase())
     });
@@ -91,7 +94,7 @@ function App() {
         <div className="list">{filteredData.map((obj, index) => {
           return (
             <div className="cartao" key={index}>
-              <h1>{index + 1}</h1>
+              <h1>{obj.ranking}</h1>
               <div className="conteudo">
                 <p>Track: {obj.name}</p>
                 <p>Artists: {obj.artists[0].name}</p>
