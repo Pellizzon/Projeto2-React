@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import request from "request";
 import standard from "./static/standard.png";
-import { CSSTransitionGroup } from "react-transition-group";
+import OverlayTrigger from 'react-overlay-trigger'
 
 var spotifyApi = new SpotifyWebApi();
 
@@ -125,42 +125,61 @@ function App() {
         </p>
         {term === "short_term" && (
           <p>
-            <button className="term" onClick={() => getTerm("medium_term")}>
-              Medium Term
-            </button>
-            <button className="term" onClick={() => getTerm("long_term")}>
-              Long Term
-            </button>
+            <OverlayTrigger placement="left" trigger="hover" overlay={<h6>Last 6 months of data</h6>}>
+              <button className="term" onClick={() => getTerm("medium_term")} variant="secondary">
+                Medium Term
+              </button>
+            </OverlayTrigger>
+            <OverlayTrigger placement="right" trigger="hover" overlay={<h6>Several years of data</h6>}>
+              <button className="term" onClick={() => getTerm("long_term")}>
+                Long Term
+              </button>
+            </OverlayTrigger>
           </p>
         )}
         {term === "medium_term" && (
           <p>
-            <button className="term" onClick={() => getTerm("short_term")}>
-              Short Term
+            <OverlayTrigger placement="left" trigger="hover" overlay={<h6>Last 4 weeks of data</h6>}>
+              <button className="term" onClick={() => getTerm("short_term")}>
+                Short Term
             </button>
-            <button className="term" onClick={() => getTerm("long_term")}>
-              Long Term
-            </button>
+            </OverlayTrigger>
+            <OverlayTrigger placement="right" trigger="hover" overlay={<h6>Several years of data</h6>}>
+              <button className="term" onClick={() => getTerm("long_term")}>
+                Long Term
+              </button>
+            </OverlayTrigger>
           </p>
         )}
         {term === "long_term" && (
           <p>
-            <button className="term" onClick={() => getTerm("short_term")}>
-              Short Term
-            </button>
-            <button className="term" onClick={() => getTerm("medium_term")}>
-              Medium Term
-            </button>
+            <OverlayTrigger placement="left" trigger="hover" overlay={<h6>Last 4 weeks of data</h6>}>
+              <button className="term" onClick={() => getTerm("short_term")}>
+                Short Term
+              </button>
+            </OverlayTrigger>
+            <OverlayTrigger placement="right" trigger="hover" overlay={<h6>Last 6 months of data</h6>}>
+              <button className="term" onClick={() => getTerm("medium_term")}>
+                Medium Term
+              </button>
+            </OverlayTrigger>
           </p>
         )}
         <p>
-          <button className="create" onClick={() => createPlaylist()}>
-            Create My Festival Playlist!
-          </button>
+          <OverlayTrigger placement="right" trigger="hover" overlay={<div><h6>Instructions</h6>
+            <li>Create a playlist named <code>myFestival</code></li>
+            <li>Set it to public</li>
+            <li>Enjoy!</li></div>}>
+            <button className="create" onClick={() => createPlaylist()}>
+              Create My Festival Playlist!
+            </button>
+          </OverlayTrigger>
         </p>
-        {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
-          <p>Created myFestival!</p>
-        )}
+        {
+          typeof myFestival !== "undefined" && myFestival !== "notFound" && (
+            <p>Created myFestival!</p>
+          )
+        }
         {myFestival === "notFound" && <p>Playlist not found...</p>}
         <input
           className="search"
@@ -169,33 +188,27 @@ function App() {
           placeholder="&#xF002;    Search Track Name..."
           value={search}
         />
-        <CSSTransitionGroup
-          transitionName="example"
-          transitionAppear={true}
-          transitionAppearTimeout={1000}
-        >
-          <div className="list">
-            {filteredData.map((obj, index) => {
-              return (
-                <div className="cartao" key={index}>
-                  <h1>{obj.ranking}</h1>
-                  <div className="conteudo">
-                    <p>Track: {obj.name}</p>
-                    <p>Artists: {obj.artists[0].name}</p>
-                    <p>Album: {obj.album.name}</p>
-                  </div>
-                  <img
-                    src={obj.album.images[0].url}
-                    width="60"
-                    height="60"
-                    alt="album pic"
-                  />
+        <div className="list">
+          {filteredData.map((obj, index) => {
+            return (
+              <div className="cartao" key={index}>
+                <h1>{obj.ranking}</h1>
+                <div className="conteudo">
+                  <p>Track: {obj.name}</p>
+                  <p>Artists: {obj.artists[0].name}</p>
+                  <p>Album: {obj.album.name}</p>
                 </div>
-              );
-            })}
-          </div>
-        </CSSTransitionGroup>
-      </div>
+                <img
+                  src={obj.album.images[0].url}
+                  width="60"
+                  height="60"
+                  alt="album pic"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div >
     );
   }
 

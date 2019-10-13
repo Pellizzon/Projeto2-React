@@ -8,7 +8,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+li {
   font-family: "Bungee", cursive;
   color: #fff;
 }
@@ -168,6 +169,10 @@ img {
 
 .create {
   width: 82%;
+}
+
+li {
+  color: white;
 }
 
 @media only screen and (min-width: 768px) {
