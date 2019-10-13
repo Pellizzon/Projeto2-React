@@ -28,6 +28,7 @@ function App() {
   }
   const [user, setUser] = useState();
   const [playlist, setPlaylist] = useState();
+  const [search, setSearch] = useState('');
 
   //User information
   useEffect(() => {
@@ -62,6 +63,11 @@ function App() {
   }, []);
 
   if (playlist && user && token) {
+    
+    const filteredData = playlist.filter(item => {
+        return item.name.toLowerCase().includes(search.toLowerCase())
+    });
+
     return (
       <div className="app">
         <div>
@@ -79,17 +85,18 @@ function App() {
             <p>{user.email}</p>
           </div>
         </span>
-        <a href='localhost:3000' className="link logout" >Logout</a>
-        <div className="list">{playlist.map((obj, index) => {
+        <p><a href='localhost:3000' className="link logout" >Logout</a></p>
+        <p>Search: <input type="text" onChange={e => setSearch(e.target.value)} placeholder="Search Track name..." value={search}/></p>
+        <div className="list">{filteredData.map((obj, index) => {
           return (
             <div className="cartao" key={index}>
               <h1>{index + 1}</h1>
               <div className="conteudo">
-                <p key={"Track"}>Track: {playlist[index].name}</p>
-                <p key={"Artist"}>Artists: {playlist[index].artists[0].name}</p>
-                <p key={"Album"}>Album: {playlist[index].album.name}</p>
+                <p>Track: {obj.name}</p>
+                <p>Artists: {obj.artists[0].name}</p>
+                <p>Album: {obj.album.name}</p>
               </div>
-              <img src={playlist[index].album.images[0].url} width="60" height="60" alt="album pic" />
+              <img src={obj.album.images[0].url} width="60" height="60" alt="album pic" />
             </div>
           );
         })}
