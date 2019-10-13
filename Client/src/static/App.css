@@ -121,6 +121,43 @@ img {
   background-color: #000;
 }
 
+.search {
+  background-repeat: no-repeat;
+  width: 45%;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Bungee", FontAwesome;
+  padding: 0.5rem 0.1rem; 
+  border: none;
+  background-color: #000;
+  color: #1ED761;
+}
+
+.search {
+  background-repeat: no-repeat;
+  width: 90%;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Bungee", FontAwesome;
+  padding: 0.5rem 0.1rem; 
+  border: none;
+  background-color: #000;
+  color: #FFF;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #FFF;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #FFF;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #FFF;
+}
+
 @media only screen and (min-width: 768px) {
   .header {
     font-size: 4rem;
@@ -150,5 +187,9 @@ img {
     margin: 1rem 1rem;
     width: 6rem;
     height: auto;
+  }
+
+  .search {
+    width: 30%;
   }
 }

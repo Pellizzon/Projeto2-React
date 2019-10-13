@@ -70,6 +70,7 @@ function App() {
 
     return (
       <div className="app">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         <div>
           <Header title="My Festival" />
         </div>
@@ -86,7 +87,7 @@ function App() {
           </div>
         </span>
         <p><a href='localhost:3000' className="link logout" >Logout</a></p>
-        <p>Search: <input type="text" onChange={e => setSearch(e.target.value)} placeholder="Search Track name..." value={search}/></p>
+        <input className="search" type="text" onChange={e => setSearch(e.target.value)} placeholder="&#xF002; Search Track Name..." value={search}/>
         <div className="list">{filteredData.map((obj, index) => {
           return (
             <div className="cartao" key={index}>
