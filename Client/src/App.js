@@ -29,6 +29,7 @@ function App() {
   const [user, setUser] = useState();
   const [playlist, setPlaylist] = useState();
   const [search, setSearch] = useState('');
+  const [myFestival, setMyFestival] = useState();
 
   //User information
   useEffect(() => {
@@ -71,6 +72,25 @@ function App() {
         return item.name.toLowerCase().includes(search.toLowerCase())
     });
 
+    const createPlaylist = () => {
+      spotifyApi.getUserPlaylists(user.id).then((data) => {
+        for (var i =0; i < data.items.length; i++) {
+          if (data.items[i].name !== 'myFestival') {
+            setMyFestival("notFound")
+          } else {
+            setMyFestival(data.items[i].id)
+            var l = []
+            for (var j = 0; j < playlist.length; j++) {
+              l.push(playlist[j].uri)
+            }
+            spotifyApi.addTracksToPlaylist(data.items[i].id, l)
+            break
+          }
+        }
+      })
+      
+    };
+
     return (
       <div className="app">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -90,6 +110,14 @@ function App() {
           </div>
         </span>
         <p><a href='localhost:3000' className="link logout" >Logout</a></p>
+        <p><button onClick={() => createPlaylist()}>Create My Festival Playlist!</button></p>
+        {typeof (myFestival) !== "undefined"  && myFestival !== "notFound" && (
+            <p>Playlist criada</p>
+          )
+        }
+        {myFestival === "notFound" && (
+          <p>playlist não encontrada</p>
+        )}
         <input className="search" type="text" onChange={e => setSearch(e.target.value)} placeholder="&#xF002; Search Track Name..." value={search}/>
         <div className="list">{filteredData.map((obj, index) => {
           return (
