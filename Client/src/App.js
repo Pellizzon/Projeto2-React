@@ -203,9 +203,9 @@ function App() {
           })}
         </div>
         <p>
-          <button className="logout"><a href="localhost:3000">
+          <a className="logout" href="localhost:3000">
             Logout
-          </a></button>
+          </a>
         </p>
       </div>
     );
