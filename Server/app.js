@@ -68,7 +68,7 @@ app.get('/callback', function (req, res) {
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
-    res.redirect('/#' +
+    res.redirect('http://localhost:3000/#' +
       querystring.stringify({
         error: 'state_mismatch'
       }));
@@ -100,7 +100,7 @@ app.get('/callback', function (req, res) {
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect('localhost:3000/#' +
+        res.redirect('http://localhost:3000/#' +
           querystring.stringify({
             error: 'invalid_token'
           }));

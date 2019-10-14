@@ -119,106 +119,106 @@ function App() {
           </div>
         </span>
         {term === "short_term" && (
-          <p>
+          <div>
             <div className="button_container">
-            <Button
-              className="term"
-              variant="dark"
-              active="true"
-            >
-              Last 4 weeks
+              <Button
+                className="term"
+                variant="dark"
+                active="true"
+              >
+                Last 4 weeks
             </Button>
-            <Button
-              className="term"
-              onClick={() => getTerm("medium_term")}
-              variant="dark"
-            >
-              Last 6 months
+              <Button
+                className="term"
+                onClick={() => getTerm("medium_term")}
+                variant="dark"
+              >
+                Last 6 months
             </Button>
-            <Button 
-              className="term" 
-              onClick={() => getTerm("long_term")}
-              variant="dark"
-            >
-              All-time
+              <Button
+                className="term"
+                onClick={() => getTerm("long_term")}
+                variant="dark"
+              >
+                All-time
             </Button>
             </div>
-            <Button 
-              className="term create" 
+            <Button
+              className="term create"
               onClick={() => createPlaylist()}
               variant="dark"
             >
               Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
             </Button>
-          </p>
+          </div>
         )}
         {term === "medium_term" && (
-          <p>
+          <div>
             <div className="button_container">
-            <Button
-              className="term"
-              onClick={() => getTerm("short_term")}
-              variant="dark"
-            >
-              Last 4 weeks
+              <Button
+                className="term"
+                onClick={() => getTerm("short_term")}
+                variant="dark"
+              >
+                Last 4 weeks
             </Button>
-            <Button
-              className="term"
-              variant="dark"
-              active="true"
-            >
-              Last 6 months
+              <Button
+                className="term"
+                variant="dark"
+                active="true"
+              >
+                Last 6 months
             </Button>
-            <Button 
-              className="term" 
-              onClick={() => getTerm("long_term")}
-              variant="dark"
-            >
-              All-time
+              <Button
+                className="term"
+                onClick={() => getTerm("long_term")}
+                variant="dark"
+              >
+                All-time
             </Button>
             </div>
-            <Button 
-              className="term create" 
+            <Button
+              className="term create"
               onClick={() => createPlaylist()}
               variant="dark"
             >
               Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
             </Button>
-          </p>
+          </div>
         )}
         {term === "long_term" && (
-          <p>
+          <div>
             <div className="button_container">
-            <Button
-              className="term"
-              onClick={() => getTerm("short_term")}
-              variant="dark"
-            >
-              Last 4 weeks
+              <Button
+                className="term"
+                onClick={() => getTerm("short_term")}
+                variant="dark"
+              >
+                Last 4 weeks
             </Button>
-            <Button
-              className="term"
-              onClick={() => getTerm("medium_term")}
-              variant="dark"
-            >
-              Last 6 months
+              <Button
+                className="term"
+                onClick={() => getTerm("medium_term")}
+                variant="dark"
+              >
+                Last 6 months
             </Button>
-            <Button 
-              className="term" 
-              variant="dark"
-              active="true"
-            >
-              All-time
+              <Button
+                className="term"
+                variant="dark"
+                active="true"
+              >
+                All-time
             </Button>
             </div>
-            <Button 
-              className="term create" 
+            <Button
+              className="term create"
               onClick={() => createPlaylist()}
               variant="dark"
             >
               Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
             </Button>
-          </p>
+          </div>
         )}
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
           <p>Created myFestival!</p>
