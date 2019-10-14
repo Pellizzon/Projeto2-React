@@ -164,6 +164,7 @@ img {
 
 .logout:hover {
   color: #66B933;
+  text-decoration: none;
 }
 
 .cartao:hover {
@@ -171,6 +172,7 @@ img {
 }
 
 .search {
+  margin-top: 1rem;
   background-repeat: no-repeat;
   width: 90%;
   text-align: center;
@@ -199,7 +201,31 @@ img {
   color: #fff;
 }
 
-.term {
+#dropdown-basic {
+  width: 75%;
+  margin-top: 0.5rem;
+  background-color: #252021;
+  border: #252021;
+  font-weight: 600;
+  justify-items: center;
+}
+
+#dropdown_menu {
+  width: 75%;
+  text-align: center;
+  background-color: #252021;
+}
+
+#dropdown_menu p {
+  color: #fff;
+  margin: 0;
+}
+
+#dropdown_menu p:hover {
+  background-color: #000;
+}
+
+.create {
   width: 75%;
   margin-top: 0.5rem;
   background-color: #252021;
@@ -283,16 +309,16 @@ li {
     width: 100%;
   }
 
-  .term {
-    margin: 0 0.25rem;
+  #dropdown-basic {
     width: 20%;
-    max-width: 15rem;
+  }
+
+  #dropdown_menu {
+    width: 20%;
   }
 
   .create {
     margin-top: 0.5rem;
-    grid-row: 2 / 3;
-    width: 30%;
-    max-width: 20rem;
+    width: 20%;
   }
 }

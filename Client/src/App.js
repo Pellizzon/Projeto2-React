@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
 import "./static/App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import request from "request";
@@ -120,29 +121,16 @@ function App() {
         </span>
         {term === "short_term" && (
           <div>
-            <div className="button_container">
-              <Button
-                className="term"
-                variant="dark"
-                active="true"
-              >
-                Last 4 weeks
-            </Button>
-              <Button
-                className="term"
-                onClick={() => getTerm("medium_term")}
-                variant="dark"
-              >
-                Last 6 months
-            </Button>
-              <Button
-                className="term"
-                onClick={() => getTerm("long_term")}
-                variant="dark"
-              >
-                All-time
-            </Button>
-            </div>
+            <Dropdown>
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                Last 4 weeks 
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu id='dropdown_menu'>
+                <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
+                <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <Button
               className="term create"
               onClick={() => createPlaylist()}
@@ -154,29 +142,16 @@ function App() {
         )}
         {term === "medium_term" && (
           <div>
-            <div className="button_container">
-              <Button
-                className="term"
-                onClick={() => getTerm("short_term")}
-                variant="dark"
-              >
-                Last 4 weeks
-            </Button>
-              <Button
-                className="term"
-                variant="dark"
-                active="true"
-              >
-                Last 6 months
-            </Button>
-              <Button
-                className="term"
-                onClick={() => getTerm("long_term")}
-                variant="dark"
-              >
-                All-time
-            </Button>
-            </div>
+            <Dropdown>
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                Last 6 months 
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu id='dropdown_menu'>
+                <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
+                <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <Button
               className="term create"
               onClick={() => createPlaylist()}
@@ -188,29 +163,16 @@ function App() {
         )}
         {term === "long_term" && (
           <div>
-            <div className="button_container">
-              <Button
-                className="term"
-                onClick={() => getTerm("short_term")}
-                variant="dark"
-              >
-                Last 4 weeks
-            </Button>
-              <Button
-                className="term"
-                onClick={() => getTerm("medium_term")}
-                variant="dark"
-              >
-                Last 6 months
-            </Button>
-              <Button
-                className="term"
-                variant="dark"
-                active="true"
-              >
+            <Dropdown>
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
                 All-time
-            </Button>
-            </div>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu id='dropdown_menu'>
+                <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
+                <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <Button
               className="term create"
               onClick={() => createPlaylist()}
