@@ -36,14 +36,20 @@ function App() {
 
   //User information
   useEffect(() => {
-    spotifyApi.getMe().then(data => {
-      setUser(data);
-    });
+    const tok = spotifyApi.getAccessToken();
+    if (tok) {
+      spotifyApi.getMe().then(data => {
+        setUser(data);
+      });
+    }
   }, []);
 
   //Playlist information
   useEffect(() => {
-    getTerm("short_term");
+    const tok = spotifyApi.getAccessToken();
+    if (tok) {
+      getTerm("short_term");
+    }
   }, []);
 
   const getTerm = e => {
