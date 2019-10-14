@@ -31,7 +31,6 @@ function App() {
   const [search, setSearch] = useState("");
   const [myFestival, setMyFestival] = useState();
   const [term, setTerm] = useState();
-  const [hover, setHover] = useState(false);
 
   //User information
   useEffect(() => {
@@ -153,19 +152,19 @@ function App() {
           </p>
         )}
         <p>
-          <button className="create" onClick={() => createPlaylist()} onMouseEnter={() => setHover(!hover)} onMouseLeave={() => setHover(!hover)}>
+          <button className="create" onClick={() => createPlaylist()}>
             Create myFestival Playlist!
           </button>
         </p>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
           <p>Created myFestival!</p>
         )}
-        {myFestival === "notFound" && <p>Playlist not found...</p>}
-        {hover && (
+        {myFestival === "notFound" && (
           <div>
-            <h6>Instructions</h6>
+            <p>Playlist not found...</p>
+            <h5>Instructions</h5>
             <li>
-              Create a playlist named <code>myFestival</code>
+              Create a playlist named <span id='logo1'>my</span><span id='logo2'>Festival</span>
             </li>
             <li>Set it to public</li>
             <li>Enjoy!</li>

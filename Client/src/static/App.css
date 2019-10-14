@@ -27,6 +27,10 @@ li {
   color: #fff;
 }
 
+h5 {
+  font-family: "Montserrat", sans-serif;
+}
+
 p {
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
@@ -203,6 +207,16 @@ img {
 
 li {
   color: white;
+}
+
+#logo1, #logo2 {
+  font-family: "Slabo 27px", serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#logo1 {
+  color: #1ed761;
 }
 
 @media only screen and (min-width: 768px) {
