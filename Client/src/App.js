@@ -262,7 +262,7 @@ function App() {
           })}
         </div>
         <p>
-          <a className="logout" href="localhost:3000">
+          <a className="logout" href="http://localhost:3000">
             Logout
           </a>
         </p>
@@ -276,7 +276,7 @@ function App() {
         <Header title1="my" title2="Festival" />
       </div>
       <span className="user">
-        <a href="localhost:8888/login" className="link">
+        <a href="http://localhost:8888/login" className="link">
           Login with Spotify
         </a>
       </span>
