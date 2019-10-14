@@ -4,7 +4,7 @@ const Header = props => {
   return (
     <header>
       <div className="header">
-        <span>{props.title}</span>
+        <span id="part1">{props.title1}</span><span>{props.title2}</span>
       </div>
 
       <div className="subheader-body">

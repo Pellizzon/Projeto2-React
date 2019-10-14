@@ -92,7 +92,7 @@ function App() {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         ></link>
         <div>
-          <Header title="My Festival" />
+          <Header title1="my" title2="Festival"/>
         </div>
         <span className="user">
           {typeof user.images[0] !== "undefined" && (
@@ -118,84 +118,43 @@ function App() {
             <p>{user.email}</p>
           </div>
         </span>
-        <p>
-          <a href="localhost:3000" className="link logout">
-            Logout
-          </a>
-        </p>
         {term === "short_term" && (
           <p>
-            <OverlayTrigger
-              placement="left"
-              trigger="hover"
-              overlay={<h6>Last 6 months of data</h6>}
+            <button
+              className="term"
+              onClick={() => getTerm("medium_term")}
+              variant="secondary"
             >
-              <button
-                className="term"
-                onClick={() => getTerm("medium_term")}
-                variant="secondary"
-              >
-                Medium Term
-              </button>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="right"
-              trigger="hover"
-              overlay={<h6>Several years of data</h6>}
-            >
-              <button className="term" onClick={() => getTerm("long_term")}>
-                Long Term
-              </button>
-            </OverlayTrigger>
+              Last 6 months
+            </button>
+            <button className="term" onClick={() => getTerm("long_term")}>
+              All-time
+            </button>
           </p>
         )}
         {term === "medium_term" && (
           <p>
-            <OverlayTrigger
-              placement="left"
-              trigger="hover"
-              overlay={<h6>Last 4 weeks of data</h6>}
-            >
-              <button className="term" onClick={() => getTerm("short_term")}>
-                Short Term
-              </button>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="right"
-              trigger="hover"
-              overlay={<h6>Several years of data</h6>}
-            >
-              <button className="term" onClick={() => getTerm("long_term")}>
-                Long Term
-              </button>
-            </OverlayTrigger>
+            <button className="term" onClick={() => getTerm("short_term")}>
+              Last 4 weeks
+            </button>
+            <button className="term" onClick={() => getTerm("long_term")}>
+              All-time
+            </button>
           </p>
         )}
         {term === "long_term" && (
           <p>
-            <OverlayTrigger
-              placement="left"
-              trigger="hover"
-              overlay={<h6>Last 4 weeks of data</h6>}
-            >
-              <button className="term" onClick={() => getTerm("short_term")}>
-                Short Term
-              </button>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="right"
-              trigger="hover"
-              overlay={<h6>Last 6 months of data</h6>}
-            >
-              <button className="term" onClick={() => getTerm("medium_term")}>
-                Medium Term
-              </button>
-            </OverlayTrigger>
+            <button className="term" onClick={() => getTerm("short_term")}>
+              Last 4 weeks
+            </button>
+            <button className="term" onClick={() => getTerm("medium_term")}>
+              Last 6 months
+            </button>
           </p>
         )}
-        <p>
-          <OverlayTrigger
-            placement="right"
+         <p>
+         {/* <OverlayTrigger
+            placement="bottom"
             trigger="hover"
             overlay={
               <div>
@@ -207,12 +166,12 @@ function App() {
                 <li>Enjoy!</li>
               </div>
             }
-          >
+          > */}
             <button className="create" onClick={() => createPlaylist()}>
-              Create My Festival Playlist!
+              Create myFestival Playlist!
             </button>
-          </OverlayTrigger>
-        </p>
+          {/* </OverlayTrigger> */}
+        </p> 
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
           <p>Created myFestival!</p>
         )}
@@ -244,6 +203,11 @@ function App() {
             );
           })}
         </div>
+        <p>
+          <button className="logout"><a href="localhost:3000" className="link">
+            Logout
+          </a></button>
+        </p>
       </div>
     );
   }
@@ -251,7 +215,7 @@ function App() {
   return (
     <div className="app">
       <div>
-        <Header title="My Festival" />
+        <Header title1="my" title2="Festival"/>
       </div>
       <span className="user">
         <a href="localhost:8888/login" className="link">
