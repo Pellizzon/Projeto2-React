@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import request from "request";
 import standard from "./static/standard.png";
-import OverlayTrigger from "react-overlay-trigger";
 
 var spotifyApi = new SpotifyWebApi();
 
@@ -204,7 +203,7 @@ function App() {
           })}
         </div>
         <p>
-          <button className="logout"><a href="localhost:3000" className="link">
+          <button className="logout"><a href="localhost:3000">
             Logout
           </a></button>
         </p>
