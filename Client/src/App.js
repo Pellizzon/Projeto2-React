@@ -73,15 +73,22 @@ function App() {
         for (var i = 0; i < data.items.length; i++) {
           if (data.items[i].name !== "myFestival") {
             setMyFestival("notFound");
-          } else {
-            setMyFestival(data.items[i].id);
-            var l = [];
-            for (var j = 0; j < playlist.length; j++) {
-              l.push(playlist[j].uri);
+          } else { var id = data.items[i].id;
+              spotifyApi.getPlaylistTracks(id).then(data => {
+                var remove = [];
+                for (var k = 0; k < data.items.length; k++) {
+                  remove.push(data.items[k].track.uri);
+                }
+                spotifyApi.removeTracksFromPlaylist(id, remove).then(data => {
+                  setMyFestival(id);
+                  var l = [];
+                  for (var j = 0; j < playlist.length; j++) {
+                    l.push(playlist[j].uri);
+                  }
+                  spotifyApi.addTracksToPlaylist(id, l);
+                })
+              })
             }
-            spotifyApi.addTracksToPlaylist(data.items[i].id, l);
-            break;
-          }
         }
       });
     };
