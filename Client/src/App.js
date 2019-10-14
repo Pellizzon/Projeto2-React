@@ -31,6 +31,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [myFestival, setMyFestival] = useState();
   const [term, setTerm] = useState();
+  const [hover, setHover] = useState(false);
 
   //User information
   useEffect(() => {
@@ -91,7 +92,7 @@ function App() {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         ></link>
         <div>
-          <Header title1="my" title2="Festival"/>
+          <Header title1="my" title2="Festival" />
         </div>
         <span className="user">
           {typeof user.images[0] !== "undefined" && (
@@ -151,30 +152,25 @@ function App() {
             </button>
           </p>
         )}
-         <p>
-         {/* <OverlayTrigger
-            placement="bottom"
-            trigger="hover"
-            overlay={
-              <div>
-                <h6>Instructions</h6>
-                <li>
-                  Create a playlist named <code>myFestival</code>
-                </li>
-                <li>Set it to public</li>
-                <li>Enjoy!</li>
-              </div>
-            }
-          > */}
-            <button className="create" onClick={() => createPlaylist()}>
-              Create myFestival Playlist!
-            </button>
-          {/* </OverlayTrigger> */}
-        </p> 
+        <p>
+          <button className="create" onClick={() => createPlaylist()} onMouseEnter={() => setHover(!hover)} onMouseLeave={() => setHover(!hover)}>
+            Create myFestival Playlist!
+          </button>
+        </p>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
           <p>Created myFestival!</p>
         )}
         {myFestival === "notFound" && <p>Playlist not found...</p>}
+        {hover && (
+          <div>
+            <h6>Instructions</h6>
+            <li>
+              Create a playlist named <code>myFestival</code>
+            </li>
+            <li>Set it to public</li>
+            <li>Enjoy!</li>
+          </div>
+        )}
         <input
           className="search"
           type="text"
@@ -214,7 +210,7 @@ function App() {
   return (
     <div className="app">
       <div>
-        <Header title1="my" title2="Festival"/>
+        <Header title1="my" title2="Festival" />
       </div>
       <span className="user">
         <a href="localhost:8888/login" className="link">
