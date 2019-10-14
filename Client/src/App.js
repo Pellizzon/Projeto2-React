@@ -73,22 +73,23 @@ function App() {
         for (var i = 0; i < data.items.length; i++) {
           if (data.items[i].name !== "myFestival") {
             setMyFestival("notFound");
-          } else { var id = data.items[i].id;
-              spotifyApi.getPlaylistTracks(id).then(data => {
-                var remove = [];
-                for (var k = 0; k < data.items.length; k++) {
-                  remove.push(data.items[k].track.uri);
+          } else {
+            var id = data.items[i].id;
+            spotifyApi.getPlaylistTracks(id).then(data => {
+              var remove = [];
+              for (var k = 0; k < data.items.length; k++) {
+                remove.push(data.items[k].track.uri);
+              }
+              spotifyApi.removeTracksFromPlaylist(id, remove).then(data => {
+                setMyFestival(id);
+                var l = [];
+                for (var j = 0; j < playlist.length; j++) {
+                  l.push(playlist[j].uri);
                 }
-                spotifyApi.removeTracksFromPlaylist(id, remove).then(data => {
-                  setMyFestival(id);
-                  var l = [];
-                  for (var j = 0; j < playlist.length; j++) {
-                    l.push(playlist[j].uri);
-                  }
-                  spotifyApi.addTracksToPlaylist(id, l);
-                })
+                spotifyApi.addTracksToPlaylist(id, l);
               })
-            }
+            })
+          }
         }
       });
     };
@@ -130,7 +131,7 @@ function App() {
           <div>
             <Dropdown>
               <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                Last 4 weeks 
+                Last 4 weeks
               </Dropdown.Toggle>
 
               <Dropdown.Menu id='dropdown_menu'>
@@ -151,7 +152,7 @@ function App() {
           <div>
             <Dropdown>
               <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                Last 6 months 
+                Last 6 months
               </Dropdown.Toggle>
 
               <Dropdown.Menu id='dropdown_menu'>
