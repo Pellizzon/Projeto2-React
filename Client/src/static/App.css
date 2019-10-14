@@ -3,14 +3,18 @@
 
 html {
   height: 100%;
+  width: 100%;
 }
 
 body {
+  margin: 0;
   height: 100%;
+  width: 100%;
 }
 
 #root {
   height: 100%;
+  width: 100%;
   background-color: #000;
   display: grid;
   grid-area: 'tudo';
@@ -39,7 +43,7 @@ p {
 
 .app {
   align-self: center;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
   background-color: #000;
 }
@@ -76,6 +80,7 @@ a.link:hover {
 
 .user {
   margin: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -195,14 +200,11 @@ img {
 }
 
 .term {
-  width: 40%;
-  margin: 0 0.25rem;
-  font-weight: bolder;
-}
-
-.create {
-  width: 82%;
-  font-weight: bolder;
+  width: 75%;
+  margin-top: 0.5rem;
+  background-color: #252021;
+  border: #252021;
+  font-weight: 600;
 }
 
 li {
@@ -210,13 +212,22 @@ li {
 }
 
 #logo1, #logo2 {
-  font-family: "Slabo 27px", serif;
+  font-family: "Montserrat", serif;
   font-size: 1rem;
   font-weight: 600;
 }
 
 #logo1 {
   color: #1ed761;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
 }
 
 @media only screen and (min-width: 768px) {
@@ -264,20 +275,24 @@ li {
     font-size: 1.25rem;
   }
 
+  .search:hover {
+    background-color: #252021;
+  }
+
+  .button_container {
+    width: 100%;
+  }
+
   .term {
-    width: 10%;
+    margin: 0 0.25rem;
+    width: 20%;
+    max-width: 15rem;
   }
 
   .create {
-    width: 20.5%;
+    margin-top: 0.5rem;
+    grid-row: 2 / 3;
+    width: 30%;
+    max-width: 20rem;
   }
-}
-
-.example-appear {
-  opacity: 0.01;
-}
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
 }

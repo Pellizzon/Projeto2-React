@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
-import "./static/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Button from 'react-bootstrap/Button';
+import "./static/App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import request from "request";
 import standard from "./static/standard.png";
@@ -119,43 +120,106 @@ function App() {
         </span>
         {term === "short_term" && (
           <p>
-            <button
+            <div className="button_container">
+            <Button
+              className="term"
+              variant="dark"
+              active="true"
+            >
+              Last 4 weeks
+            </Button>
+            <Button
               className="term"
               onClick={() => getTerm("medium_term")}
-              variant="secondary"
+              variant="dark"
             >
               Last 6 months
-            </button>
-            <button className="term" onClick={() => getTerm("long_term")}>
+            </Button>
+            <Button 
+              className="term" 
+              onClick={() => getTerm("long_term")}
+              variant="dark"
+            >
               All-time
-            </button>
+            </Button>
+            </div>
+            <Button 
+              className="term create" 
+              onClick={() => createPlaylist()}
+              variant="dark"
+            >
+              Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
+            </Button>
           </p>
         )}
         {term === "medium_term" && (
           <p>
-            <button className="term" onClick={() => getTerm("short_term")}>
+            <div className="button_container">
+            <Button
+              className="term"
+              onClick={() => getTerm("short_term")}
+              variant="dark"
+            >
               Last 4 weeks
-            </button>
-            <button className="term" onClick={() => getTerm("long_term")}>
+            </Button>
+            <Button
+              className="term"
+              variant="dark"
+              active="true"
+            >
+              Last 6 months
+            </Button>
+            <Button 
+              className="term" 
+              onClick={() => getTerm("long_term")}
+              variant="dark"
+            >
               All-time
-            </button>
+            </Button>
+            </div>
+            <Button 
+              className="term create" 
+              onClick={() => createPlaylist()}
+              variant="dark"
+            >
+              Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
+            </Button>
           </p>
         )}
         {term === "long_term" && (
           <p>
-            <button className="term" onClick={() => getTerm("short_term")}>
+            <div className="button_container">
+            <Button
+              className="term"
+              onClick={() => getTerm("short_term")}
+              variant="dark"
+            >
               Last 4 weeks
-            </button>
-            <button className="term" onClick={() => getTerm("medium_term")}>
+            </Button>
+            <Button
+              className="term"
+              onClick={() => getTerm("medium_term")}
+              variant="dark"
+            >
               Last 6 months
-            </button>
+            </Button>
+            <Button 
+              className="term" 
+              variant="dark"
+              active="true"
+            >
+              All-time
+            </Button>
+            </div>
+            <Button 
+              className="term create" 
+              onClick={() => createPlaylist()}
+              variant="dark"
+            >
+              Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
+            </Button>
           </p>
         )}
-        <p>
-          <button className="create" onClick={() => createPlaylist()}>
-            Create myFestival Playlist!
-          </button>
-        </p>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
           <p>Created myFestival!</p>
         )}
