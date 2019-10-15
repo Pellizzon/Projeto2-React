@@ -33,6 +33,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [myFestival, setMyFestival] = useState();
   const [term, setTerm] = useState();
+  const [hover, setHover] = useState(false);
 
   //User information
   useEffect(() => {
@@ -74,30 +75,34 @@ function App() {
       return item.name.toLowerCase().includes(search.toLowerCase());
     });
 
-    const createPlaylist = () => {
-      spotifyApi.getUserPlaylists(user.id).then(data => {
-        for (var i = 0; i < data.items.length; i++) {
-          if (data.items[i].name !== "myFestival") {
-            setMyFestival("notFound");
-          } else {
-            var id = data.items[i].id;
-            spotifyApi.getPlaylistTracks(id).then(data => {
-              var remove = [];
-              for (var k = 0; k < data.items.length; k++) {
-                remove.push(data.items[k].track.uri);
-              }
-              spotifyApi.removeTracksFromPlaylist(id, remove).then(data => {
-                setMyFestival(id);
-                var l = [];
-                for (var j = 0; j < playlist.length; j++) {
-                  l.push(playlist[j].uri);
-                }
-                spotifyApi.addTracksToPlaylist(id, l);
-              })
-            })
+    const createPlaylist = async () => {
+      try {
+        const items = await spotifyApi.getUserPlaylists(user.id).then(({ items }) => {
+          return items;
+        })
+        var id = null;
+        items.forEach((el, i) => {
+          if (el.name === "myFestival") {
+            id = el.id;
           }
+        })
+        if (id) {
+          const tracks = await spotifyApi.getPlaylistTracks(id).then(({ items }) => {
+            return items;
+          })
+          await spotifyApi.removeTracksFromPlaylist(id, tracks.map((el, i) => {
+            return el.track.uri;
+          }))
+          setMyFestival(id);
+          await spotifyApi.addTracksToPlaylist(id, playlist.map((el, i) => {
+            return el.uri;
+          }))
+        } else {
+          setMyFestival("notFound");
         }
-      });
+      } catch (err) {
+        setMyFestival("notFound");
+      }
     };
 
     return (
@@ -133,75 +138,64 @@ function App() {
             <p>{user.email}</p>
           </div>
         </span>
-        {term === "short_term" && (
-          <div>
-            <Dropdown>
-              <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                Last 4 weeks
+        <div>
+          {term === "short_term" && (
+            <div>
+              <Dropdown>
+                <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                  Last 4 weeks
+              </Dropdown.Toggle>
+                <Dropdown.Menu id='dropdown_menu'>
+                  <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
+                  <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          )}
+          {term === "medium_term" && (
+            <div>
+              <Dropdown>
+                <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                  Last 6 months
               </Dropdown.Toggle>
 
-              <Dropdown.Menu id='dropdown_menu'>
-                <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
-                <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Button
-              className="term create"
-              onClick={() => createPlaylist()}
-              variant="dark"
-            >
-              Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
-            </Button>
-          </div>
-        )}
-        {term === "medium_term" && (
-          <div>
-            <Dropdown>
-              <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                Last 6 months
+                <Dropdown.Menu id='dropdown_menu'>
+                  <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
+                  <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          )}
+          {term === "long_term" && (
+            <div>
+              <Dropdown>
+                <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                  All-time
               </Dropdown.Toggle>
 
-              <Dropdown.Menu id='dropdown_menu'>
-                <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
-                <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Button
-              className="term create"
-              onClick={() => createPlaylist()}
-              variant="dark"
-            >
-              Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
-            </Button>
-          </div>
-        )}
-        {term === "long_term" && (
-          <div>
-            <Dropdown>
-              <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                All-time
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu id='dropdown_menu'>
-                <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
-                <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Button
-              className="term create"
-              onClick={() => createPlaylist()}
-              variant="dark"
-            >
-              Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
-            </Button>
-          </div>
-        )}
+                <Dropdown.Menu id='dropdown_menu'>
+                  <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
+                  <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          )}
+          <Button
+            className="term create"
+            onClick={() => createPlaylist()}
+            variant="dark"
+            onMouseEnter={() => setHover(!hover)}
+            onMouseLeave={() => setHover(!hover)}
+          >
+            Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
+          </Button>
+        </div>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
-          <p>Created myFestival!</p>
+          <p>myFestival playlist ready</p>
         )}
-        {myFestival === "notFound" && (
+        {myFestival === "notFound" && <p>Playlist not found...</p>}
+        {hover && (
           <div>
-            <p>Playlist not found...</p>
             <h5>Instructions</h5>
             <li>
               Create a playlist named <span id='logo1'>my</span><span id='logo2'>Festival</span>
