@@ -191,11 +191,11 @@ function App() {
           </Button>
         </div>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
-          <p>myFestival playlist ready</p>
+          <p className="messege">myFestival playlist ready</p>
         )}
         {myFestival === "notFound" && <p>Playlist not found...</p>}
         {hover && (
-          <div>
+          <div className="messege">
             <h5>Instructions</h5>
             <li>
               Create a playlist named <span id='logo1'>my</span><span id='logo2'>Festival</span>
