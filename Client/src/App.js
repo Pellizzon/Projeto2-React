@@ -167,7 +167,6 @@ function App() {
                 <Dropdown.Toggle variant="dark" id="dropdown-basic">
                   Last 6 months
               </Dropdown.Toggle>
-
                 <Dropdown.Menu id='dropdown_menu'>
                   <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
                   <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
@@ -181,7 +180,6 @@ function App() {
                 <Dropdown.Toggle variant="dark" id="dropdown-basic">
                   All-time
               </Dropdown.Toggle>
-
                 <Dropdown.Menu id='dropdown_menu'>
                   <Dropdown.Item as={"p"} onClick={() => getTerm("short_term")}>Last 4 weeks</Dropdown.Item>
                   <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
@@ -202,8 +200,8 @@ function App() {
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && show && (
           <p className="messege">myFestival Playlist Ready</p>
         )}
-        
-        {myFestival === "notFound" && <p>Playlist not found...</p>}
+
+        {myFestival === "notFound" && <p className="messege">Playlist not found...</p>}
         {hover && (
           <div className="messege">
             <h5>Instructions</h5>
