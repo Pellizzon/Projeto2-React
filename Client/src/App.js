@@ -116,13 +116,7 @@ function App() {
 
     return (
       <div className="app">
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        ></link>
-        <div>
-          <Header title1="my" title2="Festival" />
-        </div>
+        <Header title1="my" title2="Festival" />
         <span className="user">
           {typeof user.images[0] !== "undefined" && (
             <img
@@ -198,12 +192,12 @@ function App() {
           </Button>
         </div>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && show && (
-          <p className="messege">myFestival Playlist Ready</p>
+          <p className="message">myFestival Playlist Ready</p>
         )}
 
-        {myFestival === "notFound" && <p className="messege">Playlist not found...</p>}
+        {myFestival === "notFound" && <p className="message">Playlist not found...</p>}
         {hover && (
-          <div className="messege">
+          <div className="message">
             <h5>Instructions</h5>
             <li>
               Create a playlist named <span id='logo1'>my</span><span id='logo2'>Festival</span>
