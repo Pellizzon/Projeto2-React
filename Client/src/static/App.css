@@ -1,20 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-html {
+html, body, #root {
   height: 100%;
   width: 100%;
 }
 
 body {
   margin: 0;
-  height: 100%;
-  width: 100%;
 }
 
 #root {
-  height: 100%;
-  width: 100%;
   background-color: #000;
   display: grid;
   grid-area: 'tudo';
@@ -56,7 +52,7 @@ p {
 }
 
 .header #part1 {
-  color: #CD201F;
+  color: #1ed760;
 }
 
 .subheader {
@@ -71,7 +67,7 @@ p {
 
 a.link {
   text-decoration: none;
-  color: #CD201F;
+  color: #1ed760;
 }
 
 a.link:hover {
@@ -132,7 +128,7 @@ img {
   margin-left: 1rem;
   grid-column: 1 / 2;
   text-align: center;
-  color: #CD201F;
+  color: #1ed760;
   font-weight: bold;
 }
 
@@ -156,7 +152,7 @@ img {
 .logout {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-  color: #CD201F;
+  color: #1ed760;
   font-weight: 700;
   width: 100%;
   height: 100%;
@@ -254,7 +250,7 @@ li {
 }
 
 #logo1 {
-  color: #CD201F;
+  color: #1ed760;
 }
 
 .example-appear {

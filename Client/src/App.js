@@ -87,13 +87,13 @@ function App() {
           }
         })
         if (id) {
+          setMyFestival(id);
           const tracks = await spotifyApi.getPlaylistTracks(id).then(({ items }) => {
             return items;
           })
           await spotifyApi.removeTracksFromPlaylist(id, tracks.map((el, i) => {
             return el.track.uri;
           }))
-          setMyFestival(id);
           await spotifyApi.addTracksToPlaylist(id, playlist.map((el, i) => {
             return el.uri;
           }))
