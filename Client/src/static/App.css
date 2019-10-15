@@ -253,6 +253,10 @@ li {
   color: #1ed760;
 }
 
+.messege {
+  margin-top: 1rem;
+}
+
 .example-appear {
   opacity: 0.01;
 }
