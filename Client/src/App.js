@@ -34,6 +34,14 @@ function App() {
   const [myFestival, setMyFestival] = useState();
   const [term, setTerm] = useState();
   const [hover, setHover] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const showNow = () => {
+    setShow(true);
+    setTimeout(function () {
+      setShow(false);
+    }, 3000);
+  }
 
   //User information
   useEffect(() => {
@@ -97,6 +105,7 @@ function App() {
           await spotifyApi.addTracksToPlaylist(id, playlist.map((el, i) => {
             return el.uri;
           }))
+          showNow();
         } else {
           setMyFestival("notFound");
         }
@@ -190,9 +199,10 @@ function App() {
             Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
           </Button>
         </div>
-        {typeof myFestival !== "undefined" && myFestival !== "notFound" && (
-          <p className="messege">myFestival playlist ready</p>
+        {typeof myFestival !== "undefined" && myFestival !== "notFound" && show && (
+          <p className="messege">myFestival Playlist Ready</p>
         )}
+        
         {myFestival === "notFound" && <p>Playlist not found...</p>}
         {hover && (
           <div className="messege">
