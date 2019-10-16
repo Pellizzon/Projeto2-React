@@ -36,7 +36,7 @@ function App() {
   const [hover, setHover] = useState(false);
   const [show, setShow] = useState(false);
   const [close, setClose] = useState(true);
-  
+
   const showNow = () => {
     setShow(true);
     setTimeout(function () {
@@ -214,7 +214,7 @@ function App() {
         <div className="list">
           {filteredData.map((obj, index) => {
             return (
-              <a id="cartao" href={obj.external_urls.spotify} target="_blank" key={index}>
+              <a id="cartao" href={obj.external_urls.spotify} target="_blank" rel="noopener noreferrer" key={index}>
                 <h1>{obj.ranking}</h1>
                 <div className="conteudo">
                   <p>Track: {obj.name}</p>
@@ -241,7 +241,7 @@ function App() {
         <Header title1="my" title2="Festival" />
       </div>
       <span className="user">
-        <a href="http://localhost:8888/login" className="link">
+        <a href="http://localhost:4000/login" className="link">
           Login with Spotify
         </a>
       </span>

@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '7e1e1303a9ce40e384202605dd7b7b6c';
 var client_secret = 'cba908b334bf414f88c37618f34362af';
-var redirect_uri = 'http://localhost:8888/callback';
+var redirect_uri = 'http://localhost:4000/callback';
 
 var generateRandomString = function (length) {
   var text = '';
@@ -90,5 +90,5 @@ app.get('/callback', function (req, res) {
   }
 });
 
-console.log('Listening on 8888');
-app.listen(8888);
+console.log('Listening on 4000');
+app.listen(4000);
