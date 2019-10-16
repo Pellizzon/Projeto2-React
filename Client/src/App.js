@@ -44,14 +44,6 @@ function App() {
     }, 3000);
   }
 
-  const w3_open = () => {
-    setClose(false);
-  }
-
-  const w3_close = () => {
-    setClose(true);
-  }
-
   //User information
   useEffect(() => {
     const tok = spotifyApi.getAccessToken();
@@ -126,38 +118,26 @@ function App() {
     return (
       <div className="app">
         {!close && (
-        <div className="w3-sidebar w3-bar-block w3-animate-left" id="mySidebar">
-          <button id="closeButton" className="w3-bar-item"
-          onClick={() => w3_close()}>Close &times;</button>
-          <a id="logout" href="http://localhost:3000" className="w3-bar-item">Logout</a>
-        </div>
+          <div className="w3-sidebar w3-bar-block w3-animate-left" id="mySidebar">
+            <button id="closeButton" className="w3-bar-item"
+              onClick={() => setClose(!close)}>Close &times;</button>
+            <a id="logout" href="http://localhost:3000" className="w3-bar-item">Logout</a>
+          </div>
         )}
         <div className="header_sidebar">
           {close && (
-            
-              <button id="sidebarButton" onClick={() => w3_open()}>&#9776;</button>
-            
+            <button id="sidebarButton" onClick={() => setClose(!close)}>&#9776;</button>
           )}
           <Header title1="my" title2="Festival" />
         </div>
         <span className="user">
           {typeof user.images[0] !== "undefined" && (
-            <img
-              src={user.images[0].url}
-              className="user-img"
-              width="60"
-              height="60"
-              alt="user pic"
-            />
+            <img src={user.images[0].url} className="user-img"
+              width="60" height="60" alt="user pic" />
           )}
           {typeof user.images[0] === "undefined" && (
-            <img
-              src={standard}
-              className="user-img"
-              width="60"
-              height="60"
-              alt="user pic"
-            />
+            <img src={standard} className="user-img"
+              width="60" height="60" alt="user pic" />
           )}
           <div className="user-infos">
             <p>Logged in as {user.display_name}</p>
@@ -229,13 +209,8 @@ function App() {
             <li>Enjoy!</li>
           </div>
         )}
-        <input
-          className="search"
-          type="text"
-          onChange={e => setSearch(e.target.value)}
-          placeholder="&#xF002;    Search Track Name..."
-          value={search}
-        />
+        <input className="search" type="text" onChange={e => setSearch(e.target.value)}
+          placeholder="&#xF002;    Search Track Name..." value={search} />
         <div className="list">
           {filteredData.map((obj, index) => {
             return (
@@ -246,12 +221,8 @@ function App() {
                   <p>Artists: {obj.artists[0].name}</p>
                   <p>Album: {obj.album.name}</p>
                 </div>
-                <img
-                  src={obj.album.images[0].url}
-                  width="60"
-                  height="60"
-                  alt="album pic"
-                />
+                <img src={obj.album.images[0].url}
+                  width="60" height="60" alt="album pic" />
               </div>
             );
           })}
