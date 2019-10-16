@@ -188,8 +188,8 @@ function App() {
             className="term create"
             onClick={() => createPlaylist()}
             variant="dark"
-            onMouseEnter={() => setHover(!hover)}
-            onMouseLeave={() => setHover(!hover)}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
           >
             Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
           </Button>
@@ -214,16 +214,20 @@ function App() {
         <div className="list">
           {filteredData.map((obj, index) => {
             return (
-              <div className="cartao" key={index}>
+              <a id="cartao" href={obj.external_urls.spotify} target="_blank" key={index}>
                 <h1>{obj.ranking}</h1>
                 <div className="conteudo">
                   <p>Track: {obj.name}</p>
                   <p>Artists: {obj.artists[0].name}</p>
                   <p>Album: {obj.album.name}</p>
                 </div>
-                <img src={obj.album.images[0].url}
-                  width="60" height="60" alt="album pic" />
-              </div>
+                <img
+                  src={obj.album.images[0].url}
+                  width="60"
+                  height="60"
+                  alt="album pic"
+                />
+              </a>
             );
           })}
         </div>

@@ -72,6 +72,7 @@ a.link {
 
 a.link:hover {
   color: #66B933;
+  text-decoration: underline;
 }
 
 .user {
@@ -115,7 +116,8 @@ img {
   justify-content: center;
 }
 
-.cartao {
+#cartao {
+  text-decoration: none;
   margin-bottom: 0.5rem;
   background-color: #252021;
   display: grid;
@@ -124,7 +126,7 @@ img {
   grid-template-columns: 1fr 5fr;
 }
 
-.cartao h1 {
+#cartao h1 {
   margin-left: 1rem;
   grid-column: 1 / 2;
   text-align: center;
@@ -132,7 +134,7 @@ img {
   font-weight: bold;
 }
 
-.cartao .conteudo {
+#cartao .conteudo {
   grid-column: 2 / 3;
   justify-self: start;
 }
@@ -145,11 +147,11 @@ img {
   font-weight: 600;
 }
 
-.cartao img {
+#cartao img {
   display: none;
 }
 
-.cartao:hover {
+#cartao:hover {
   background-color: #000;
 }
 
@@ -245,6 +247,8 @@ li {
 
 #mySidebar {
   background-color: #252021;
+  position: absolute;
+  top: 0;
 }
 
 #mySidebar #closeButton{
@@ -323,17 +327,17 @@ li {
     font-size: 1.25rem;
   }
 
-  .cartao {
+  #cartao {
     margin: 0;
     width: 45%;
     grid-template-columns: 1fr 5fr 1fr;
   }
 
-  .cartao h1 {
+  #cartao h1 {
     font-size: 3rem;
   }
 
-  .cartao img {
+  #cartao img {
     display: block;
     grid-column: 3 / 4;
     margin: 1rem 1rem;
