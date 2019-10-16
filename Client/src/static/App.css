@@ -149,20 +149,6 @@ img {
   display: none;
 }
 
-.logout {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  color: #1ed760;
-  font-weight: 700;
-  width: 100%;
-  height: 100%;
-}
-
-.logout:hover {
-  color: #66B933;
-  text-decoration: none;
-}
-
 .cartao:hover {
   background-color: #000;
 }
@@ -244,7 +230,7 @@ li {
 }
 
 #logo1, #logo2 {
-  font-family: "Montserrat", serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -255,6 +241,55 @@ li {
 
 .message {
   margin-top: 1rem;
+}
+
+#mySidebar {
+  background-color: #252021;
+}
+
+#mySidebar #closeButton{
+  color: #1ed760;
+  background-color: #252021;
+  font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+#mySidebar #logout{
+  color: #fff;
+  background-color: #252021;
+  font-size: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+#mySidebar #closeButton:hover {
+  background-color: #000;
+}
+
+#mySidebar #logout:hover {
+  text-decoration: none;
+  background-color: #000;
+}
+
+#sidebarButton {
+  background-color: #000;
+  border: #252021;
+  color: #1ed760; 
+  padding: 0.5rem 1rem;
+  font-size: 1.75rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#sidebarButton:hover {
+  background-color: #000;
+  border: #1C1C1C;
+  color: #fff; 
+}
+
+.header_sidebar {
+  display: flex;
+  justify-content: center;
 }
 
 .example-appear {

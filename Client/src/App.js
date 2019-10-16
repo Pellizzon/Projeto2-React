@@ -35,12 +35,21 @@ function App() {
   const [term, setTerm] = useState();
   const [hover, setHover] = useState(false);
   const [show, setShow] = useState(false);
+  const [close, setClose] = useState(true);
 
   const showNow = () => {
     setShow(true);
     setTimeout(function () {
       setShow(false);
     }, 3000);
+  }
+
+  const w3_open = () => {
+    setClose(false);
+  }
+
+  const w3_close = () => {
+    setClose(true);
   }
 
   //User information
@@ -116,7 +125,21 @@ function App() {
 
     return (
       <div className="app">
-        <Header title1="my" title2="Festival" />
+        {!close && (
+        <div className="w3-sidebar w3-bar-block w3-animate-left" id="mySidebar">
+          <button id="closeButton" className="w3-bar-item"
+          onClick={() => w3_close()}>Close &times;</button>
+          <a id="logout" href="http://localhost:3000" className="w3-bar-item">Logout</a>
+        </div>
+        )}
+        <div className="header_sidebar">
+          {close && (
+            
+              <button id="sidebarButton" onClick={() => w3_open()}>&#9776;</button>
+            
+          )}
+          <Header title1="my" title2="Festival" />
+        </div>
         <span className="user">
           {typeof user.images[0] !== "undefined" && (
             <img
@@ -233,11 +256,6 @@ function App() {
             );
           })}
         </div>
-        <p>
-          <a className="logout" href="http://localhost:3000">
-            Logout
-          </a>
-        </p>
       </div>
     );
   }
