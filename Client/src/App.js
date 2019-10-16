@@ -36,7 +36,7 @@ function App() {
   const [hover, setHover] = useState(false);
   const [show, setShow] = useState(false);
   const [close, setClose] = useState(true);
-
+  
   const showNow = () => {
     setShow(true);
     setTimeout(function () {
@@ -116,7 +116,7 @@ function App() {
     };
 
     return (
-      <div className="app">
+      <div id='logged' className="app">
         {!close && (
           <div className="w3-sidebar w3-bar-block w3-animate-left" id="mySidebar">
             <button id="closeButton" className="w3-bar-item"

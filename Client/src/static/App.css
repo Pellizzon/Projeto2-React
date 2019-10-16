@@ -44,6 +44,10 @@ p {
   background-color: #000;
 }
 
+#logged {
+  align-self: auto;
+}
+
 .header {
   color: #fff;
   font-size: 4rem;
@@ -247,8 +251,7 @@ li {
 
 #mySidebar {
   background-color: #252021;
-  position: absolute;
-  top: 0;
+  
 }
 
 #mySidebar #closeButton{
