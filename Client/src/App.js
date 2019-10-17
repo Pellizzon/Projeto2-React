@@ -106,10 +106,10 @@ function App() {
           await spotifyApi.addTracksToPlaylist(id, playlist.map((el, i) => {
             return el.uri;
           }))
-          showNow();
         } else {
           setMyFestival("notFound");
         }
+        showNow();
       } catch (err) {
         setMyFestival("notFound");
       }
@@ -198,7 +198,7 @@ function App() {
           <p className="message">myFestival Playlist Ready</p>
         )}
 
-        {myFestival === "notFound" && <p className="message">Playlist not found...</p>}
+        {myFestival === "notFound" && show && <p className="message">Playlist not found...</p>}
         {hover && (
           <div className="message">
             <h5>Instructions</h5>
