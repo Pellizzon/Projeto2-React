@@ -1,12 +1,13 @@
+require("dotenv-safe").config();
 var express = require('express');
 var request = require('request');
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = '7e1e1303a9ce40e384202605dd7b7b6c';
-var client_secret = 'cba908b334bf414f88c37618f34362af';
-var redirect_uri = 'http://localhost:4000/callback';
+var client_id = process.env.CLIENT_ID;
+var client_secret = process.env.CLIENT_SECRET;
+var redirect_uri = process.env.URI;
 
 var generateRandomString = function (length) {
   var text = '';

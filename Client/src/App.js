@@ -214,20 +214,15 @@ function App() {
         <div className="list">
           {filteredData.map((obj, index) => {
             return (
-              <a id="cartao" href={obj.external_urls.spotify} target="_blank" rel="noopener noreferrer" key={index}>
+              <div key={index}>
                 <h1>{obj.ranking}</h1>
-                <div className="conteudo">
-                  <p>Track: {obj.name}</p>
-                  <p>Artists: {obj.artists[0].name}</p>
-                  <p>Album: {obj.album.name}</p>
-                </div>
-                <img
-                  src={obj.album.images[0].url}
-                  width="60"
-                  height="60"
-                  alt="album pic"
+                <iframe
+                  title={obj.album}
+                  src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}
+                  width="380"
+                  height="380"
                 />
-              </a>
+              </div>
             );
           })}
         </div>
