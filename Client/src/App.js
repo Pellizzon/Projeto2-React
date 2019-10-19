@@ -213,7 +213,23 @@ function App() {
           placeholder="&#xF002;    Search Track Name..." value={search} />
         <div className="list">
           {filteredData.map((obj, index) => {
-            return (
+            if (user.product === "premium") {
+              return (
+                <div key={index} id="cartao">
+                  <h1>{obj.ranking}</h1>
+                  <iframe
+                    title={obj.album}
+                    src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}
+                    width="380"
+                    height="380"
+                    frameBorder="0"
+                    allowtransparency="true"
+                    allow="encrypted-media"
+                  />
+                </div>
+              );
+            } else {
+              return (
               <div key={index} id="cartao">
                 <h1>{obj.ranking}</h1>
                 <iframe
@@ -224,9 +240,9 @@ function App() {
                   frameBorder="0"
                   allowtransparency="true"
                 />
-                {/* allow="encrypted-media" */}
               </div>
             );
+            }
           })}
         </div>
       </div>
