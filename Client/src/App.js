@@ -214,8 +214,8 @@ function App() {
         <div className="list">
           {filteredData.map((obj, index) => {
             return (
-              <div key={index} className="cartao">
-                <h1 className="cartao">{obj.ranking}</h1>
+              <div key={index} id="cartao">
+                <h1>{obj.ranking}</h1>
                 <iframe
                   title={obj.album}
                   src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}

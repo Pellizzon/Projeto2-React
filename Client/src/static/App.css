@@ -123,36 +123,25 @@ img {
 #cartao {
   text-decoration: none;
   margin-bottom: 0.5rem;
-  background-color: #252021;
+  background-color: #000;
   display: grid;
   align-items: center;
-  width: 90%;
+  width: 100%;
+  height: 5.5rem;
   grid-template-columns: 1fr 5fr;
 }
 
 #cartao h1 {
-  margin-left: 1rem;
   grid-column: 1 / 2;
   text-align: center;
   color: #1ed760;
   font-weight: bold;
 }
 
-#cartao .conteudo {
+#cartao iframe {
   grid-column: 2 / 3;
-  justify-self: start;
-}
-
-.conteudo p {
-  color: #fff;
-  margin: 0.5rem 0rem;
-  margin-left: 1rem;
-  text-align: left;
-  font-weight: 600;
-}
-
-#cartao img {
-  display: none;
+  width: 100%;
+  height: 100%;
 }
 
 #cartao:hover {
@@ -277,7 +266,7 @@ li {
 }
 
 #sidebarButton {
-  background-color: #000;
+  background-color: transparent;
   border: #252021;
   color: #1ed760; 
   padding: 0.5rem 1rem;
@@ -331,20 +320,21 @@ li {
 
   #cartao {
     margin: 0;
-    width: 45%;
-    grid-template-columns: 1fr 5fr 1fr;
+    width: 30%;
+    height: auto;
+    grid-template-rows: 1fr 6fr;
+    grid-template-columns: 100%;
   }
 
   #cartao h1 {
     font-size: 3rem;
+    grid-row: 1 / 2;
   }
 
-  #cartao img {
-    display: block;
-    grid-column: 3 / 4;
-    margin: 1rem 1rem;
-    width: 8rem;
-    height: auto;
+  #cartao iframe {
+    height: 100%;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
   }
 
   .search {
