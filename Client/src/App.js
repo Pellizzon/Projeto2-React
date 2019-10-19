@@ -214,8 +214,8 @@ function App() {
         <div className="list">
           {filteredData.map((obj, index) => {
             return (
-              <div key={index}>
-                <h1>{obj.ranking}</h1>
+              <div key={index} className="cartao">
+                <h1 className="cartao">{obj.ranking}</h1>
                 <iframe
                   title={obj.album}
                   src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}
@@ -223,8 +223,8 @@ function App() {
                   height="380"
                   frameBorder="0"
                   allowtransparency="true"
-                  allow="encrypted-media"
                 />
+                {/* allow="encrypted-media" */}
               </div>
             );
           })}

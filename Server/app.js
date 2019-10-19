@@ -4,6 +4,7 @@ var request = require('request');
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var cookie = require('cookie');
 
 var client_id = process.env.CLIENT_ID;
 var client_secret = process.env.CLIENT_SECRET;
@@ -30,6 +31,10 @@ app.use(express.static(__dirname + '/public'))
 app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
+  res.setHeader('set-cookie', [
+    'same-site-cookie=bar; SameSite=Lax',
+    'cross-site-cookie=foo; SameSite=None; Secure',
+  ]);
   res.cookie(stateKey, state);
 
   var scope = 'user-read-private user-read-email user-top-read playlist-modify-public';
@@ -46,11 +51,20 @@ app.get('/login', function (req, res) {
 
 app.get('/callback', function (req, res) {
 
+  res.setHeader('set-cookie', [
+    'same-site-cookie=bar; SameSite=Lax',
+    'cross-site-cookie=foo; SameSite=None; Secure',
+  ]);
+
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
+    res.setHeader('set-cookie', [
+      'same-site-cookie=bar; SameSite=Lax',
+      'cross-site-cookie=foo; SameSite=None; Secure',
+    ]);
     res.redirect('http://localhost:3000/#' +
       querystring.stringify({
         error: 'state_mismatch'
@@ -73,7 +87,10 @@ app.get('/callback', function (req, res) {
     request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
 
-        res.cooki("Set-Cookie", "locale=de; HttpOnly; SameSite=strict");
+        res.setHeader('set-cookie', [
+          'same-site-cookie=bar; SameSite=Lax',
+          'cross-site-cookie=foo; SameSite=None; Secure',
+        ]);
 
         var access_token = body.access_token,
           refresh_token = body.refresh_token;
