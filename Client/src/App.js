@@ -221,6 +221,9 @@ function App() {
                   src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}
                   width="380"
                   height="380"
+                  frameBorder="0"
+                  allowtransparency="true"
+                  allow="encrypted-media"
                 />
               </div>
             );
