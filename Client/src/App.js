@@ -50,6 +50,7 @@ function App() {
     if (tok) {
       spotifyApi.getMe().then(data => {
         setUser(data);
+        console.log(data)
       });
     }
   }, []);
@@ -85,6 +86,11 @@ function App() {
     });
 
     const createPlaylist = async () => {
+      await spotifyApi.createPlaylist(user.id, { name: "myFestival" }).then((res) => {
+        console.log(res.id)
+        setMyFestival(res.id);
+      })
+
       try {
         const items = await spotifyApi.getUserPlaylists(user.id).then(({ items }) => {
           return items;
@@ -150,7 +156,7 @@ function App() {
               <Dropdown>
                 <Dropdown.Toggle variant="dark" id="dropdown-basic">
                   Last 4 weeks
-              </Dropdown.Toggle>
+                </Dropdown.Toggle>
                 <Dropdown.Menu id='dropdown_menu'>
                   <Dropdown.Item as={"p"} onClick={() => getTerm("medium_term")}>Last 6 months</Dropdown.Item>
                   <Dropdown.Item as={"p"} onClick={() => getTerm("long_term")}>All-time</Dropdown.Item>
@@ -230,18 +236,18 @@ function App() {
               );
             } else {
               return (
-              <div key={index} id="cartao">
-                <h1>{obj.ranking}</h1>
-                <iframe
-                  title={obj.album}
-                  src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}
-                  width="380"
-                  height="380"
-                  frameBorder="0"
-                  allowtransparency="true"
-                />
-              </div>
-            );
+                <div key={index} id="cartao">
+                  <h1>{obj.ranking}</h1>
+                  <iframe
+                    title={obj.album}
+                    src={`https://open.spotify.com/embed?uri=spotify:track:${obj.id}`}
+                    width="380"
+                    height="380"
+                    frameBorder="0"
+                    allowtransparency="true"
+                  />
+                </div>
+              );
             }
           })}
         </div>
@@ -255,7 +261,7 @@ function App() {
         <Header title1="my" title2="Festival" />
       </div>
       <span className="user">
-        <a href="http://localhost:4000/login" className="link">
+        <a href="http://localhost:5000/login" className="link">
           Login with Spotify
         </a>
       </span>
