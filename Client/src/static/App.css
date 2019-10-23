@@ -142,6 +142,8 @@ img {
   grid-column: 2 / 3;
   width: 100%;
   height: 100%;
+  background:url(../static/loading.gif) center center no-repeat;
+  background-size: 10%;
 }
 
 #cartao:hover {
@@ -285,6 +287,10 @@ li {
 .header_sidebar {
   display: flex;
   justify-content: center;
+}
+
+.spinner {
+  color: #1ed760;
 }
 
 .example-appear {

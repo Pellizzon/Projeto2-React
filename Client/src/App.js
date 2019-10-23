@@ -33,7 +33,6 @@ function App() {
   const [search, setSearch] = useState("");
   const [myFestival, setMyFestival] = useState();
   const [term, setTerm] = useState();
-  const [hover, setHover] = useState(false);
   const [show, setShow] = useState(false);
   const [close, setClose] = useState(true);
 
@@ -50,7 +49,6 @@ function App() {
     if (tok) {
       spotifyApi.getMe().then(data => {
         setUser(data);
-        console.log(data)
       });
     }
   }, []);
@@ -86,11 +84,6 @@ function App() {
     });
 
     const createPlaylist = async () => {
-      await spotifyApi.createPlaylist(user.id, { name: "myFestival" }).then((res) => {
-        console.log(res.id)
-        setMyFestival(res.id);
-      })
-
       try {
         const items = await spotifyApi.getUserPlaylists(user.id).then(({ items }) => {
           return items;
@@ -101,6 +94,11 @@ function App() {
             id = el.id;
           }
         })
+        if (id === null) {
+          await spotifyApi.createPlaylist(user.id, {name: "myFestival", description: "To build your own myFestival playlist visit pellizzon.github.io/myFestival"}).then((res) => {
+            id = res.id;
+          })
+        }
         if (id) {
           setMyFestival(id);
           const tracks = await spotifyApi.getPlaylistTracks(id).then(({ items }) => {
@@ -194,27 +192,15 @@ function App() {
             className="term create"
             onClick={() => createPlaylist()}
             variant="dark"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
           >
             Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist!
           </Button>
         </div>
         {typeof myFestival !== "undefined" && myFestival !== "notFound" && show && (
-          <p className="message">myFestival Playlist Ready</p>
+          <p className="message"><span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist Ready</p>
         )}
 
-        {myFestival === "notFound" && show && <p className="message">Playlist not found...</p>}
-        {hover && (
-          <div className="message">
-            <h5>Instructions</h5>
-            <li>
-              Create a playlist named <span id='logo1'>my</span><span id='logo2'>Festival</span>
-            </li>
-            <li>Set it to public</li>
-            <li>Enjoy!</li>
-          </div>
-        )}
+        {myFestival === "notFound" && show && <p className="message">Failed to Create <span id='logo1'>my</span><span id='logo2'>Festival</span> Playlist...</p>}
         <input className="search" type="text" onChange={e => setSearch(e.target.value)}
           placeholder="&#xF002;    Search Track Name..." value={search} />
         <div className="list">
@@ -251,6 +237,7 @@ function App() {
             }
           })}
         </div>
+      )}
       </div>
     );
   }
