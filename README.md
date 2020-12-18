@@ -31,4 +31,4 @@ There are two parts to it, the auth-server, and the client.
 
 ### 4)  Use the App
 - Visit http://localhost:3000
-- Click 'Log in with Spotify' and log in (right click it)
+- Click 'Log in with Spotify' and log in
