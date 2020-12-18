@@ -95,7 +95,7 @@ function App() {
           }
         })
         if (id === null) {
-          await spotifyApi.createPlaylist(user.id, {name: "myFestival", description: "To build your own myFestival playlist visit pellizzon.github.io/myFestival"}).then((res) => {
+          await spotifyApi.createPlaylist(user.id, { name: "myFestival", description: "To build your own myFestival playlist visit pellizzon.github.io/myFestival" }).then((res) => {
             id = res.id;
           })
         }
@@ -237,7 +237,7 @@ function App() {
             }
           })}
         </div>
-      )}
+      )
       </div>
     );
   }

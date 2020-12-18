@@ -1,14 +1,20 @@
-# spotify-api-intro
-This Repo is the result of a tutorial that teaches how to use Spotify's API with react.
-It's a simple app that allows users to see what song they currently have been playing on Spotify.
+# myFestival Web Application
+This repository is uses React and Spotify's API to show the user his/her top 50 songs. It's possible to list the top 50 of different periods:
+
+- Last 4 weeks
+- Last 6 months
+- All time
+
+It also enables the creation of a playlist that contains all of the top 50 tracks listed in the selected period.
+
 There are two parts to it, the auth-server, and the client. 
 
-## Getting Statrted
+## Running it Locally
 
 ### 1) Create an App
 - Visit https://developer.spotify.com/ 
 - Log in and create an app
-- Enter http//localhost:8888/callback as the redirect uri
+- Enter http://localhost:5000/callback as the redirect uri
 - Save your changes
 - Copy down the following: Redirect uri, client id, client secret
 
@@ -24,6 +30,5 @@ There are two parts to it, the auth-server, and the client.
 - Run the Server `npm start`
 
 ### 4)  Use the App
-- Make sure you have a song playing (or paused) on a Spotify app
 - Visit http://localhost:3000
 - Click 'Log in with Spotify' and log in (right click it)
